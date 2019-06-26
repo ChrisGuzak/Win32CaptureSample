@@ -77,6 +77,7 @@ LRESULT SampleWindow::MessageHandler(UINT const message, WPARAM const wparam, LP
 
                         SetSubTitle(std::wstring(item.DisplayName()));
                         SendMessage(m_monitorComboBoxHwnd, CB_SETCURSEL, -1, 0);
+						SendMessage(m_cursorCheckBoxHwnd, BM_SETCHECK, BST_CHECKED, 0);
                     }
                     else if (hwnd == m_monitorComboBoxHwnd)
                     {
@@ -85,6 +86,7 @@ LRESULT SampleWindow::MessageHandler(UINT const message, WPARAM const wparam, LP
 
                         SetSubTitle(std::wstring(item.DisplayName()));
                         SendMessage(m_windowComboBoxHwnd, CB_SETCURSEL, -1, 0);
+						SendMessage(m_cursorCheckBoxHwnd, BM_SETCHECK, BST_CHECKED, 0);
                     }
                 }
                 break;
@@ -100,6 +102,7 @@ LRESULT SampleWindow::MessageHandler(UINT const message, WPARAM const wparam, LP
                         SetSubTitle(L"");
                         SendMessage(m_monitorComboBoxHwnd, CB_SETCURSEL, -1, 0);
                         SendMessage(m_windowComboBoxHwnd, CB_SETCURSEL, -1, 0);
+						SendMessage(m_cursorCheckBoxHwnd, BM_SETCHECK, BST_CHECKED, 0);
                     }
                     else if (hwnd == m_cursorCheckBoxHwnd)
                     {
@@ -128,6 +131,7 @@ fire_and_forget SampleWindow::OnPickerButtonClicked()
         SetSubTitle(std::wstring(selectedItem.DisplayName()));
         SendMessage(m_monitorComboBoxHwnd, CB_SETCURSEL, -1, 0);
         SendMessage(m_windowComboBoxHwnd, CB_SETCURSEL, -1, 0);
+		SendMessage(m_cursorCheckBoxHwnd, BM_SETCHECK, BST_CHECKED, 0);
     }
 }
 
@@ -215,7 +219,7 @@ void SampleWindow::CreateControls(HINSTANCE instance)
     HWND cursorCheckBoxHwnd = CreateWindow(
         WC_BUTTON,
         L"Enable Cursor",
-        WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_CHECKBOX | cursorEnableStyle,
+        WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_AUTOCHECKBOX | cursorEnableStyle,
         10,
         160,
         200,
@@ -227,7 +231,7 @@ void SampleWindow::CreateControls(HINSTANCE instance)
     WINRT_VERIFY(cursorCheckBoxHwnd);
 
     // The default state is true for cursor rendering
-    SendMessage(cursorCheckBoxHwnd, BM_SETCHECK, TRUE, 0);
+    SendMessage(cursorCheckBoxHwnd, BM_SETCHECK, BST_CHECKED, 0);
 
     m_windowComboBoxHwnd = windowComboBoxHwnd;
     m_monitorComboBoxHwnd = monitorComboBoxHwnd;
