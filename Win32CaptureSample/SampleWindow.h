@@ -32,6 +32,7 @@ private:
     HWND m_monitorComboBoxHwnd = NULL;
     HWND m_pickerButtonHwnd = NULL;
     HWND m_stopButtonHwnd = NULL;
+    HWND m_cursorCheckBoxHwnd = NULL;
     std::vector<EnumerationWindow> m_windows;
     std::vector<EnumerationMonitor> m_monitors;
     std::shared_ptr<App> m_app;

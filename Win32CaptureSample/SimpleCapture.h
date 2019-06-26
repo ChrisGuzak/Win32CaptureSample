@@ -12,6 +12,9 @@ public:
     winrt::Windows::UI::Composition::ICompositionSurface CreateSurface(
         winrt::Windows::UI::Composition::Compositor const& compositor);
 
+    bool IsCursorEnabled() { return true; }
+    void IsCursorEnabled(bool value) {}
+
     void Close();
 
 private:

@@ -12,6 +12,9 @@ public:
     winrt::Windows::Graphics::Capture::GraphicsCaptureItem StartCaptureFromMonitorHandle(HMONITOR hmon);
     winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Graphics::Capture::GraphicsCaptureItem> StartCaptureWithPickerAsync();
 
+    bool IsCursorEnabled();
+    void IsCursorEnabled(bool value);
+
     void StopCapture();
 
 private:
